@@ -14,7 +14,9 @@ _**NOTE:** You may want to come back and study this section later, if you want t
 
 Starting an x86-based Linux system involves a number of steps. When the computer is powered on, the **B**asic **I**nput/**O**utput **S**ystem (**BIOS**) initializes the hardware, including the screen and keyboard, and tests the main memory. This process is also called **POST** (**P**ower **O**n **S**elf **T**est).
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/bios.jpg)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/bios.jpg" alt="bios"/>
+</p>
 
 The BIOS software is stored on a ROM chip on the motherboard. After this, the remainder of the boot process is controlled by the operating system (OS).
 
@@ -24,7 +26,9 @@ Once the POST is completed, the system control passes from the BIOS to the **boo
 
 A number of boot loaders exist for Linux; the most common ones are **GRUB** (for **GR**and **U**nified **B**oot loader), **ISOLINUX** (for booting from removable media), and **DAS U-Boot** (for booting on embedded devices/appliances). Most Linux boot loaders can present a user interface for choosing alternative options for booting Linux, and even other operating systems that might be installed. When booting Linux, the boot loader is responsible for loading the kernel image and the initial RAM disk or filesystem (which contains some critical files and device drivers needed to start the system) into memory.
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/master%20boot%20record.jpg)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/master%20boot%20record.jpg" alt="master boot record"/>
+</p>
 
 ## **Boot Loader in Action**
 
@@ -42,7 +46,9 @@ The **mount** program instructs the operating system that a filesystem is ready 
 
 **init** handles the mounting and pivoting over to the final real root filesystem. If special hardware drivers are needed before the mass storage can be accessed, they must be in the initramfs image.
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20initial%20ram%20disk.jpg)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20initial%20ram%20disk.jpg" alt="the initial ram disk"/>
+</p>
 
 ## **Text-Mode Login**
 
@@ -50,7 +56,9 @@ Near the end of the boot process, **init** starts a number of text-mode login pr
 
 The terminals which run the command shells can be accessed using the **ALT** key plus a `function` key. Most distributions start six text terminals and one graphics terminal starting with **F1** or **F2**. Within a graphical environment, switching to a text console requires pressing **CTRL-ALT** + the appropriate function key (with **F7** or **F1** leading to the GUI).
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/text-mode%20logins.jpg)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/text-mode%20logins.jpg" alt="text mode logins"/>
+</p>
 
 Usually, the default command shell is **bash** (the **GNU** **B**ourne **A**gain **Sh**ell), but there are a number of other advanced command shells available. The shell prints a text prompt, indicating it is ready to accept commands; after the user types the command and presses `Enter`, the command is executed, and another prompt is displayed after the command is done.
 
@@ -152,6 +160,14 @@ Linux uses the '`/`' character to separate paths (unlike Windows, which uses '`\
 
 <p align="center">
   <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20filesystem%20hierarchy%20standard.jpg" alt="the filesystem hierarchy standard"/>
+</p>
+
+## **More About the Filesystem Hierarchy Standard**
+
+All Linux filesystem names are case-sensitive, so `/boot`, `/Boot`, and `/BOOT` represent three different directories (or folders). Many distributions distinguish between core utilities needed for proper system operation and other programs, and place the latter in directories under `/usr` (think user). To get a sense for how the other programs are organized, find the `/usr` directory in the diagram from the previous page and compare the subdirectories with those that exist directly under the system root directory (`/`).
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/more%20about%20the%20filesystem%20hierarchy%20standard.png" alt="more about the filesystem hierarchy standard"/>
 </p>
 
 
