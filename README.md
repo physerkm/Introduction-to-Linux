@@ -58,7 +58,9 @@ Usually, the default command shell is **bash** (the **GNU** **B**ourne **A**gain
 
 The boot loader loads both the **kernel** and an initial RAM–based file system (initramfs) into memory, so it can be used directly by the kernel.
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20linux%20kernel.jpg)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20linux%20kernel.jpg" alt="the linux kernel"/>
+</p>
 
 When the kernel is loaded in RAM, it immediately initializes and configures the computer’s memory and also configures all the hardware attached to the system. This includes all processors, I/O subsystems, storage devices, etc. The kernel also loads some necessary user space applications.
 
@@ -68,7 +70,9 @@ Once the kernel has set up all its hardware and mounted the root filesystem, the
 
 Besides starting the system, **init** is responsible for keeping the system running and for shutting it down cleanly. One of its responsibilities is to act when necessary as a manager for all non-kernel processes; it cleans up after them upon completion, and restarts user login services as needed when users log in and out, and does the same for other background system services.
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/sbin%2C%20init%20and%20services.jpg)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/sbin%2C%20init%20and%20services.jpg" alt="sbin init and services"/>
+</p>
 
 Traditionally, this process startup was done using conventions that date back to the 1980s and the System V variety of UNIX. This serial process had the system passing through a sequence of **runlevels** containing collections of scripts that start and stop services. Each runlevel supported a different mode of running the system. Within each runlevel, individual services could be set to run, or to be shut down if running.
 
@@ -109,7 +113,9 @@ One **systemd** command (`systemctl`) is used for most basic tasks. While we hav
 
 In most cases, the **`.service`** can be omitted. There are many technical differences with older methods that lie beyond the scope of our discussion.  
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/systemd.png)
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/systemd.png" alt="systemd"/>
+</p>
 
 ## **Linux Filesystems**
 
@@ -134,8 +140,9 @@ One can think of a partition as a container in which a filesystem resides, altho
 
 A comparison between filesystems in Windows and Linux is given in the accompanying table:
 
-![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/partitions%20and%20filesystems.png)
-
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/partitions%20and%20filesystems.png" alt="partitions and filesystems"/>
+</p>
 
 
 
