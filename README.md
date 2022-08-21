@@ -44,7 +44,35 @@ The **mount** program instructs the operating system that a filesystem is ready 
 
 ![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20initial%20ram%20disk.jpg)
 
+### **Text-Mode Login**
 
+Near the end of the boot process, **init** starts a number of text-mode login prompts. These enable us to type our username, followed by our password, and to eventually get a command shell. However, if we are running a system with a graphical login interface, we will not see these at first.
+
+The terminals which run the command shells can be accessed using the **ALT** key plus a `function` key. Most distributions start six text terminals and one graphics terminal starting with **F1** or **F2**. Within a graphical environment, switching to a text console requires pressing **CTRL-ALT** + the appropriate function key (with **F7** or **F1** leading to the GUI).
+
+![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/text-mode%20logins.jpg)
+
+Usually, the default command shell is **bash** (the **GNU** **B**ourne **A**gain **Sh**ell), but there are a number of other advanced command shells available. The shell prints a text prompt, indicating it is ready to accept commands; after the user types the command and presses `Enter`, the command is executed, and another prompt is displayed after the command is done.
+
+### **The Linux Kernel**
+
+The boot loader loads both the **kernel** and an initial RAM–based file system (initramfs) into memory, so it can be used directly by the kernel.
+
+![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20linux%20kernel.jpg)
+
+When the kernel is loaded in RAM, it immediately initializes and configures the computer’s memory and also configures all the hardware attached to the system. This includes all processors, I/O subsystems, storage devices, etc. The kernel also loads some necessary user space applications.
+
+### **/sbin/init and Services**
+
+Once the kernel has set up all its hardware and mounted the root filesystem, the kernel runs `/sbin/init`. This then becomes the initial process, which then starts other processes to get the system running. Most other processes on the system trace their origin ultimately to **init**; exceptions include the so-called kernel processes. These are started by the kernel directly, and their job is to manage internal operating system details.
+
+Besides starting the system, **init** is responsible for keeping the system running and for shutting it down cleanly. One of its responsibilities is to act when necessary as a manager for all non-kernel processes; it cleans up after them upon completion, and restarts user login services as needed when users log in and out, and does the same for other background system services.
+
+![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/sbin%2C%20init%20and%20services.jpg)
+
+Traditionally, this process startup was done using conventions that date back to the 1980s and the System V variety of UNIX. This serial process had the system passing through a sequence of **runlevels** containing collections of scripts that start and stop services. Each runlevel supported a different mode of running the system. Within each runlevel, individual services could be set to run, or to be shut down if running.
+
+However, all major distributions have moved away from this sequential runlevel method of system initialization, although they usually emulate many System V utilities for compatibility purposes. Next, we discuss the new methods, of which **systemd** has become dominant.
 
 
 
