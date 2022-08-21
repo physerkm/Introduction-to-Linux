@@ -1,6 +1,6 @@
 # **Introduction to Linux**
 
-### **The Boot Process**
+## **The Boot Process**
 
 The Linux boot process is the procedure for initializing the system. It consists of everything that happens from when the computer power is first switched on until the user interface is fully operational. 
 
@@ -10,7 +10,7 @@ On the other hand, the boot process can be rather technical, and you can start u
 
 _**NOTE:** You may want to come back and study this section later, if you want to first get a good feel for how to use a Linux system._
 
-### **BIOS - The First Step**
+## **BIOS - The First Step**
 
 Starting an x86-based Linux system involves a number of steps. When the computer is powered on, the **B**asic **I**nput/**O**utput **S**ystem (**BIOS**) initializes the hardware, including the screen and keyboard, and tests the main memory. This process is also called **POST** (**P**ower **O**n **S**elf **T**est).
 
@@ -18,7 +18,7 @@ Starting an x86-based Linux system involves a number of steps. When the computer
 
 The BIOS software is stored on a ROM chip on the motherboard. After this, the remainder of the boot process is controlled by the operating system (OS).
 
-### **Master Boot Record (MBR) and Boot Loader**
+## **Master Boot Record (MBR) and Boot Loader**
 
 Once the POST is completed, the system control passes from the BIOS to the **boot loader**. The boot loader is usually stored on one of the hard disks in the system, either in the boot sector (for traditional BIOS/MBR systems) or the **EFI** partition (for more recent (Unified) **E**xtensible **F**irmware **I**nterface or **EFI/UEFI** systems). Up to this stage, the machine does not access any mass storage media. Thereafter, information on date, time, and the most important peripherals are loaded from the CMOS values (after a technology used for the battery-powered memory store which allows the system to keep track of the date and time even when it is powered off).
 
@@ -26,7 +26,7 @@ A number of boot loaders exist for Linux; the most common ones are **GRUB** (for
 
 ![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/master%20boot%20record.jpg)
 
-### **Boot Loader in Action**
+## **Boot Loader in Action**
 
 The boot loader has two distinct stages:
 
@@ -34,7 +34,7 @@ For systems using the BIOS/MBR method, the boot loader resides at the first sect
 
 The second stage boot loader resides under `/boot`. A splash screen is displayed, which allows us to choose which operating system (OS) to boot. After choosing the OS, the boot loader loads the kernel of the selected operating system into RAM and passes control to it. Kernels are almost always compressed, so its first job is to uncompress itself. After this, it will check and analyze the system hardware and initialize any hardware device drivers built into the kernel.
 
-### **Initial RAM Disk**
+## **Initial RAM Disk**
 
 The **initramfs** filesystem image contains programs and binary files that perform all actions needed to mount the proper root filesystem, like providing kernel functionality for the needed filesystem and device drivers for mass storage controllers with a facility called **udev** (for **u**ser **dev**ice), which is responsible for figuring out which devices are present, locating the device drivers they need to operate properly, and loading them. After the root filesystem has been found, it is checked for errors and mounted.
 
@@ -44,7 +44,7 @@ The **mount** program instructs the operating system that a filesystem is ready 
 
 ![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20initial%20ram%20disk.jpg)
 
-### **Text-Mode Login**
+## **Text-Mode Login**
 
 Near the end of the boot process, **init** starts a number of text-mode login prompts. These enable us to type our username, followed by our password, and to eventually get a command shell. However, if we are running a system with a graphical login interface, we will not see these at first.
 
@@ -54,7 +54,7 @@ The terminals which run the command shells can be accessed using the **ALT** key
 
 Usually, the default command shell is **bash** (the **GNU** **B**ourne **A**gain **Sh**ell), but there are a number of other advanced command shells available. The shell prints a text prompt, indicating it is ready to accept commands; after the user types the command and presses `Enter`, the command is executed, and another prompt is displayed after the command is done.
 
-### **The Linux Kernel**
+## **The Linux Kernel**
 
 The boot loader loads both the **kernel** and an initial RAM–based file system (initramfs) into memory, so it can be used directly by the kernel.
 
@@ -62,7 +62,7 @@ The boot loader loads both the **kernel** and an initial RAM–based file system
 
 When the kernel is loaded in RAM, it immediately initializes and configures the computer’s memory and also configures all the hardware attached to the system. This includes all processors, I/O subsystems, storage devices, etc. The kernel also loads some necessary user space applications.
 
-### **/sbin/init and Services**
+## **/sbin/init and Services**
 
 Once the kernel has set up all its hardware and mounted the root filesystem, the kernel runs `/sbin/init`. This then becomes the initial process, which then starts other processes to get the system running. Most other processes on the system trace their origin ultimately to **init**; exceptions include the so-called kernel processes. These are started by the kernel directly, and their job is to manage internal operating system details.
 
@@ -73,6 +73,68 @@ Besides starting the system, **init** is responsible for keeping the system runn
 Traditionally, this process startup was done using conventions that date back to the 1980s and the System V variety of UNIX. This serial process had the system passing through a sequence of **runlevels** containing collections of scripts that start and stop services. Each runlevel supported a different mode of running the system. Within each runlevel, individual services could be set to run, or to be shut down if running.
 
 However, all major distributions have moved away from this sequential runlevel method of system initialization, although they usually emulate many System V utilities for compatibility purposes. Next, we discuss the new methods, of which **systemd** has become dominant.
+
+## **Startup Alternatives**
+
+**SysVinit** viewed things as a serial process, divided into a series of sequential stages. Each stage required completion before the next could proceed. Thus, startup did not easily take advantage of the _**parallel processing**_ that could be done on multiple processors or cores.
+
+Furthermore, shutdown and reboot was seen as a relatively rare event; exactly how long it took was not considered important. This is no longer true, especially with mobile devices and embedded Linux systems. Some modern methods, such as the use of **containers**, can require almost instantaneous startup times. Thus, systems now require methods with faster and enhanced capabilities. Finally, the older methods required rather complicated startup scripts, which were difficult to keep universal across distribution versions, kernel versions, architectures, and types of systems. The two main alternatives developed were:
+
+**Upstart**
+
+- Developed by Ubuntu and first included in 2006
+- Adopted in Fedora 9 (in 2008) and in RHEL 6 and its clones
+
+**systemd**
+
+- Adopted by Fedora first (in 2011)
+- Adopted by RHEL 7 and SUSE 
+- Replaced Upstart in Ubuntu 16.04
+
+While the migration to **systemd** was rather controversial, it has been adopted by all major distributions, and so we will not discuss the older System V method or Upstart, which has become a dead end. Regardless of how one feels about the controversies or the technical methods of **systemd**, almost universal adoption has made learning how to work on Linux systems simpler, as there are fewer differences among distributions. We enumerate **systemd** features next.
+
+## **systemd Features**
+
+Systems with **systemd** start up faster than those with earlier **init** methods. This is largely because it replaces a serialized set of steps with aggressive parallelization techniques, which permits multiple services to be initiated simultaneously.
+
+Complicated startup shell scripts are replaced with simpler configuration files, which enumerate what has to be done before a service is started, how to execute service startup, and what conditions the service should indicate have been accomplished when startup is finished. One thing to note is that `/sbin/init` now just points to `/lib/systemd/systemd`; i.e. **systemd** takes over the **init** process.
+
+One **systemd** command (`systemctl`) is used for most basic tasks. While we have not yet talked about working at the command line, here is a brief listing of its use:
+
+- Starting, stopping, restarting a service (using **httpd**, the Apache web server, as an example) on a currently running system:
+`$ sudo systemctl start|stop|restart httpd.service`
+
+- Enabling or disabling a system service from starting up at system boot:
+`$ sudo systemctl enable|disable httpd.service`
+
+In most cases, the **`.service`** can be omitted. There are many technical differences with older methods that lie beyond the scope of our discussion.  
+
+![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/systemd.png)
+
+## **Linux Filesystems**
+
+Think of a refrigerator that has multiple shelves that can be used for storing various items. These shelves help you organize the grocery items by shape, size, type, etc. The same concept applies to a filesystem, which is the embodiment of a method of storing and organizing arbitrary collections of data in a human-usable form.
+
+Different types of filesystems supported by Linux:
+
+- Conventional disk filesystems: `ext3`, `ext4`, `XFS`, `Btrfs`, `JFS`, `NTFS`, `vfat`, `exfat`, etc.
+- Flash storage filesystems: `ubifs`, `jffs2`, `yaffs`, etc.
+- Database filesystems
+- Special purpose filesystems: `procfs`, `sysfs`, `tmpfs`, `squashfs`, `debugfs`, `fuse`, etc.
+- 
+This section will describe the standard filesystem layout shared by most Linux distributions.
+
+## **Partitions and Filesystems**
+
+A **partition** is a physically contiguous section of a disk, or what appears to be so in some advanced setups.
+
+A **filesystem** is a method of storing/finding files on a hard disk (usually in a partition). 
+
+One can think of a partition as a container in which a filesystem resides, although in some circumstances, a filesystem can span more than one partition if one uses symbolic links, which we will discuss much later.
+
+A comparison between filesystems in Windows and Linux is given in the accompanying table:
+
+![alt text](https://github.com/physerkm/Introduction-to-Linux/blob/main/partitions%20and%20filesystems.png)
 
 
 
