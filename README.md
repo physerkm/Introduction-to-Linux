@@ -144,6 +144,16 @@ A comparison between filesystems in Windows and Linux is given in the accompanyi
   <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/partitions%20and%20filesystems.png" alt="partitions and filesystems"/>
 </p>
 
+## **The Filesystem Hierarchy Standard**
+
+Linux systems store their important files according to a standard layout called the **F**ilesystem **H**ierarchy **S**tandard (**FHS**), which has long been maintained by the Linux Foundation. For more information, take a look at the following document: "_Filesystem Hierarchy Standard_" created by LSB Workgroup. Having a standard is designed to ensure that users, administrators, and developers can move between distributions without having to re-learn how the system is organized.
+
+Linux uses the '`/`' character to separate paths (unlike Windows, which uses '`\`'), and does not have drive letters. Multiple drives and/or partitions are mounted as directories in the single filesystem. Removable media such as USB drives and CDs and DVDs will show up as mounted at `/run/media/yourusername/disklabel` for recent Linux systems, or under `/media` for older distributions. For example, if your username is **`student`** a USB pen drive labeled FEDORA might end up being found at `/run/media/student/FEDORA`, and a file `README.txt` on that disc would be at `/run/media/student/FEDORA/README.txt`.
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/the%20filesystem%20hierarchy%20standard.jpg" alt="the filesystem hierarchy standard"/>
+</p>
+
 
 
 
