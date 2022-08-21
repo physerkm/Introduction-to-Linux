@@ -170,6 +170,29 @@ All Linux filesystem names are case-sensitive, so `/boot`, `/Boot`, and `/BOOT` 
   <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/more%20about%20the%20filesystem%20hierarchy%20standard.png" alt="more about the filesystem hierarchy standard"/>
 </p>
 
+## **Choosing a Linux Distribution**
+
+Suppose you intend to buy a new car. What factors do you need to consider to make a proper choice? Requirements which need to be taken into account include the size needed to fit your family in the vehicle, the type of engine and gas economy, your expected budget and available financing options, reliability record and after-sales services, etc.
+
+Similarly, determining which distribution to deploy also requires planning. The figure shows some, but not all choices. Note that many embedded Linux systems use custom crafted contents, rather than Android or Yocto.
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/choosing%20a%20linux%20distribution.png" alt="choosing a linux distribution"/>
+</p>
+
+## **Questions to Ask When Choosing a Distribution**
+
+Some questions worth thinking about before deciding on a distribution include:
+
+- What is the main function of the system (server or desktop)?
+- What types of packages are important to the organization? For example, web server, word processing, etc.
+- How much hard disk space is required and how much is available? For example, when installing Linux on an embedded device, space is usually constrained.
+- How often are packages updated?
+- How long is the support cycle for each release? For example, **LTS** releases have long-term support.
+- Do you need kernel customization from the vendor or a third party?
+- What hardware are you running on? For example, it might be **X86**, **ARM**, **PPC**, etc.
+- Do you need long-term stability? Can you accept (or need) a more volatile cutting edge system running the latest software?
+
 
 
 
