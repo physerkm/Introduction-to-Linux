@@ -406,6 +406,24 @@ Traversing up and down the filesystem tree can get tedious. The `tree` command i
 |`ls -a`|List all files, including hidden files and directories (those whose name start with . )|
 |`tree`|Displays a tree view of the filesystem|
 
+## **Viewing Files**
+
+You can use the following command line utilities to view files:
+
+|Command|Usage|   
+|-------|-----|    
+|`cat`|Used for viewing files that are not very long; it does not provide any scroll-back.|
+|`tac`|Used to look at a file backwards, starting with the last line.|
+|`less`|Used to view larger files because it is a paging program. It pauses at each screen full of text, provides scroll-back capabilities, and lets you search and navigate within the file.
+
+_**NOTE**: Use / to search for a pattern in the forward direction and ? for a pattern in the backward direction. An older program named more is still used, but has fewer capabilities: "less is more"._|
+|`tail`|Used to print the last 10 lines of a file by default. You can change the number of lines by doing -n 15 or just -15 if you wanted to look at the last 15 lines instead of the default.|
+|`head`|The opposite of `tail`; by default, it prints the first 10 lines of a file.|
+
+
+
+
+
 
 
 
