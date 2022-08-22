@@ -264,6 +264,17 @@ For **static** configurations that do not use DHCP, manual setup can also be don
 
 Wireless networks are usually not connected by default. You can view the list of available wireless networks and see which one (if any) you are currently connected to by using Network Manager. You can then add, edit, or remove known wireless networks, and also specify which ones you want connected by default when present.
 
+## **Mobile Broadband and VPN Connections**
+
+You can set up a mobile broadband connection with Network Manager, which will launch a wizard to set up the connection details for each connection.
+
+Once the configuration is done, the network is configured automatically each time the broadband network is attached.
+
+Network Manager can also manage your VPN connections.
+
+It supports many VPN technologies, such as native IPSec, Cisco OpenConnect (via either the Cisco client or a native open source client), Microsoft PPTP, and OpenVPN.
+
+You might get support for VPN as a separate package from your distributor. You need to install this package if your preferred VPN is not supported.
 
 
 
