@@ -362,6 +362,10 @@ When you first log into a system or open a terminal, the default directory shoul
 |`cd ..`|Change to parent directory (..)|
 |`cd -`|Change to previous directory (- (minus))|
 
+## **Try It Yourself: Accessing Directories Using Command Prompt**
+
+Please take a look at the following Try-It-Yourself exercise: [Accessing Directories Using Command Prompt](http://linuxfoundation.s3-website-us-east-1.amazonaws.com/TIY/usingcd/index.html).
+
 
 
 
