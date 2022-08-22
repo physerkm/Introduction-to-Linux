@@ -351,6 +351,17 @@ as well as locating source and `man` files packaged with the program.
   <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/which%20and%20whereis%20utilities.png" alt="which and whereis utilities"/>
 </p>
 
+## **Accessing Directories**
+
+When you first log into a system or open a terminal, the default directory should be your home directory. You can print the exact path of this by typing **`echo $HOME`**. Many Linux distributions actually open new graphical terminals in **`$HOME/Desktop`**. The following commands are useful for directory navigation:
+
+|Command|Result|   
+|-------|------|    
+|`pwd`|Displays the present working directory|
+|`cd ~` or `cd`|Change to your home directory (shortcut name is ~ (tilde))|
+|`cd ..`|Change to parent directory (..)|
+|`cd -`|Change to previous directory (- (minus))|
+
 
 
 
