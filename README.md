@@ -200,6 +200,18 @@ You can use either a **C**ommand **L**ine **I**nterface (**CLI**) or a **G**raph
 
 We will learn how to manage sessions using the GUI for the three Linux distribution families that we cover the most in this course: Red Hat (CentOS, Fedora), SUSE (openSUSE), and Debian (Ubuntu, Mint). Since we are using the GNOME-based variant of openSUSE rather than the KDE-based one, all are actually quite similar. If you are using KDE (or other Linux desktops such as XFCE), your experience will vary somewhat from what is shown, but not in any intrinsically difficult way, as user interfaces have converged to certain well-known behaviors on modern operating systems. In subsequent sections of this course we will concentrate in great detail on the command line interface, which is pretty much the same on all distributions.
 
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/ubuntu%2C%20centos%2C%20and%20opensuse%20desktops.png" alt="ubuntu, centos, and opensuse desktops"/>
+</p>
+
+## **X Window System**
+
+Generally, in a Linux desktop system, the X Window System is loaded as one of the final steps in the boot process. It is often just called X.
+
+A service called the **Display Manager** keeps track of the displays being provided and loads the X server (so-called, because it provides graphical services to applications, sometimes called X clients). The display manager also handles graphical logins and starts the appropriate desktop environment after a user logs in.
+
+X is rather old software; it dates back to the mid 1980s and, as such, has certain deficiencies on modern systems (for example, with security), as it has been stretched rather far from its original purposes. A newer system, known as [Wayland](https://wayland.freedesktop.org/), is gradually superseding it and is the default display system for Fedora, RHEL 8, and other recent distributions.  For the most part, it looks just like X to the user, although under the hood it is quite different.
+
 
 
 
