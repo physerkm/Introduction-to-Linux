@@ -276,6 +276,83 @@ It supports many VPN technologies, such as native IPSec, Cisco OpenConnect (via 
 
 You might get support for VPN as a separate package from your distributor. You need to install this package if your preferred VPN is not supported.
 
+## **Some Basic Utilities**
+
+There are some basic command line utilities that are used constantly, and it would be impossible to proceed further without using some of them in simple form before we discuss them in more detail. A short list has to include:
+
+- **`cat`:** used to type out a file (or combine files).
+- **`head`:** used to show the first few lines of a file.
+- **`tail`:** used to show the last few lines of a file.
+- **`man`:** used to view documentation.
+- 
+The screenshot shows elementary uses of these programs. Note the use of the pipe symbol (`|`) used to have one program take as input the output of another.
+
+For the most part, we will only use these utilities in screenshots displaying various activities, before we discuss them in detail.
+
+## **Virtual Terminals**
+
+**Virtual Terminals** (**VT**) are console sessions that use the entire display and keyboard outside of a graphical environment. Such terminals are considered "virtual" because, although there can be multiple active terminals, only one terminal remains visible at a time. A VT is not quite the same as a command line terminal window; you can have many of those visible at once on a graphical desktop.
+
+One virtual terminal (usually number one or seven) is reserved for the graphical environment, and text logins are enabled on the unused VTs. Ubuntu uses VT 7, but CentOS/RHEL and openSUSE use VT 1 for the graphical display.
+
+An example of a situation where using VTs is helpful is when you run into problems with the graphical desktop. In this situation, you can switch to one of the text VTs and troubleshoot.
+
+To switch between VTs, press **`CTRL-ALT-function key`** for the VT. For example, press **`CTRL-ALT-F6`** for VT 6. Actually, you only have to press the **`ALT-F6`** key combination if you are in a VT and want to switch to another VT.
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/switching%20between%20virtual%20terminals.jpg" alt="switching between virtual terminals"/>
+</p>
+
+## **Basic Operations**
+
+We will learn how to accomplish basic operations from the command line. These include how to log in and log out from the system, restart or shut down the system, locate applications, access directories, identify absolute and relative paths, and explore the filesystem.
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/basic%20operations.jpg" alt="basic operations"/>
+</p>
+
+## **Rebooting and Shutting Down**
+
+The preferred method to shut down or reboot the system is to use the **`shutdown`** command. This sends a warning message, and then prevents further users from logging in. The init process will then control shutting down or rebooting the system. It is important to always shut down properly; failure to do so can result in damage to the system and/or loss of data.
+
+The **`halt`** and **`poweroff`** commands issue **`shutdown -h`** to halt the system; **`reboot`** issues **`shutdown -r`** and causes the machine to reboot instead of just shutting down. Both rebooting and shutting down from the command line requires superuser (root) access.
+
+When administering a multi-user system, you have the option of notifying all users prior to shutdown, as in:
+
+**`$ sudo shutdown -h 10:00 "Shutting down for scheduled maintenance."`**
+
+_**NOTE:** On recent Wayland-based Linux distributions, broadcast messages do not appear on terminal emulation sessions running on the desktop; they appear only on the VT console displays._
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/rebooting%20and%20shutting%20down.png" alt="rebooting and shutting down"/>
+</p>
+
+## **Locating Applications**
+
+Depending on the specifics of your particular distribution's policy, programs and software packages can be installed in various directories. In general, executable programs and scripts should live in the `/bin`, `/usr/bin`, `/sbin`, `/usr/sbin` directories, or somewhere under `/opt`. They can also appear in `/usr/local/bin` and `/usr/local/sbin`, or in a directory in a user's account space, such as `/home/student/bin`.
+
+One way to locate programs is to employ the which utility. For example, to find out exactly where the diff program resides on the filesystem:
+
+```
+$ which diff
+/usr/bin/diff
+```
+
+If `which` does not find the program, `whereis` is a good alternative because it looks for packages in a broader range of system directories:
+
+```
+$ whereis diff
+diff: /usr/bin/diff /usr/share/man/man1/diff.1.gz /usr/share/man/man1p/diff.1p.gz
+```
+
+as well as locating source and `man` files packaged with the program.
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/which%20and%20whereis%20utilities.png" alt="which and whereis utilities"/>
+</p>
+
+
+
 
 
 
