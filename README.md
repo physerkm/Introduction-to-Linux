@@ -366,6 +366,46 @@ When you first log into a system or open a terminal, the default directory shoul
 
 Please take a look at the following Try-It-Yourself exercise: [Accessing Directories Using Command Prompt](http://linuxfoundation.s3-website-us-east-1.amazonaws.com/TIY/usingcd/index.html).
 
+## **Understanding Absolute and Relative Paths**
+
+There are two ways to identify paths:
+
+- **Absolute pathname:** An absolute pathname begins with the root directory and follows the tree, branch by branch, until it reaches the desired directory or file. Absolute paths always start with `/`.
+- **Relative pathname:** A relative pathname starts from the present working directory. Relative paths never start with `/`.
+- 
+Multiple slashes (`/`) between directories and files are allowed, but all but one slash between elements in the pathname is ignored by the system. `////usr//bin` is valid, but seen as `/usr/bin` by the system.
+
+Most of the time, it is most convenient to use relative paths, which require less typing. Usually, you take advantage of the shortcuts provided by: . (present directory), .. (parent directory) and `~` (your home directory).
+
+For example, suppose you are currently working in your home directory and wish to move to the `/usr/bin` directory. The following two ways will bring you to the same directory from your home directory:
+
+- Absolute pathname method
+`$ cd /usr/bin`
+- Relative pathname method
+`$ cd ../../usr/bin`
+
+In this case, the absolute pathname method requires less typing.
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/understanding%20absolute%20and%20relative%20paths.jpg" alt="understanding absolute and relative paths"/>
+</p>
+
+## **Exploring the Filesystem**
+
+Traversing up and down the filesystem tree can get tedious. The `tree` command is a good way to get a bird’s-eye view of the filesystem tree. Use `tree -d` to view just the directories and to suppress listing file names.
+
+
+<p align="center">
+  <img src="https://github.com/physerkm/Introduction-to-Linux/blob/main/exploring%20the%20filesystem.png" alt="exploring the filesystem"/>
+</p>
+
+|Command|Usage|   
+|-------|-----|    
+|`cd /`|Changes your current directory to the root (/) directory (or path you supply)|
+|`ls`|List the contents of the present working directory|
+|`ls -a`|List all files, including hidden files and directories (those whose name start with . )|
+|`tree`|Displays a tree view of the filesystem|
+
 
 
 
